@@ -540,3 +540,24 @@ searchInputclick.addEventListener("click", () => {
     getLocation(searchInput);
     searchInput.value = "";
 });
+
+//toggle between daily and weekly forecast
+
+const dailyForecastbtn = document.querySelector(".hourly");
+const dailyForecast = document.querySelector(".daily-forecast");
+const weeklyForecastbtn = document.querySelector(".week");
+const weeklyForecast = document.querySelector(".weekly-forecast");
+
+dailyForecastbtn.addEventListener("click", () => {
+    weeklyForecast.classList.add("hidden");
+    dailyForecast.classList.remove("hidden");
+    dailyForecastbtn.classList.add("active");
+    weeklyForecastbtn.classList.remove("active");
+});
+
+weeklyForecastbtn.addEventListener("click", () => {
+    weeklyForecast.classList.remove("hidden");
+    dailyForecast.classList.add("hidden");
+    dailyForecastbtn.classList.remove("active");
+    weeklyForecastbtn.classList.add("active");
+});
