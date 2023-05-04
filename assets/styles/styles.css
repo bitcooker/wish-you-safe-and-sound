@@ -91,3 +91,9 @@ footer {
     padding-top: var(--padding);
     overflow: hidden;
 }
+
+/* Main body styling */
+.main-container {
+    align-items: stretch;
+    margin: calc(var(--padding) * 2);
+}
