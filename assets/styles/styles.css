@@ -26,3 +26,68 @@
     --bg-transparent: linear-gradient(320deg, #333336 0%, #1f2f4a 100%);
     --cards-hover: linear-gradient(213deg, #454554 0%, #172338 100%);
 }
+
+/*General styling*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    background-color: var(--main-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-text);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+p {
+    font-size: 1rem;
+}
+
+sup {
+    font-size: 0.75rem;
+}
+
+a {
+    color: #426eb5;
+    text-decoration: none;
+}
+
+img {
+    filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.3));
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+footer {
+    padding-top: var(--padding);
+    overflow: hidden;
+}
