@@ -176,3 +176,17 @@ footer {
     border-radius: 50%;
     background-color: var(--btn-bg-secondary);
 }
+
+/* forecast location display styling */
+
+.location-jokes {
+    justify-content: space-between;
+}
+
+.jokes {
+    align-items: flex-end;
+}
+
+.joke-answer {
+    font-size: 0.75rem;
+}
