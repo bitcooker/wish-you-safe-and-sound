@@ -190,3 +190,12 @@ footer {
 .joke-answer {
     font-size: 0.75rem;
 }
+
+/* dashboard container styling*/
+
+.dashboard {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+}
