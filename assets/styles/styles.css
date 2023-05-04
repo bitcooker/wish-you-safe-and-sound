@@ -92,6 +92,10 @@ footer {
     overflow: hidden;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Main body */
 
 .main-container {
