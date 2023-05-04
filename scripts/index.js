@@ -15,3 +15,16 @@ modetoggle.addEventListener("click", () => {
         modetoggle.src = "./assets/images/animation-image/moon-first-quarter.svg";
     }
 });
+
+//check for user localstorage for prefered theme or city on page Load
+
+const localDeviceTheme = localStorage.getItem("theme");
+if (localDeviceTheme) {
+    document.documentElement.classList.toggle(localDeviceTheme);
+}
+
+if (localDeviceTheme === "light") {
+    modetoggle.src = "./assets/images/animation-image/moon-first-quarter.svg";
+} else {
+    modetoggle.src = "./assets/images/animation-image/clear-day.svg";
+}
