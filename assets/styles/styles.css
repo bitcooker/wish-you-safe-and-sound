@@ -92,6 +92,10 @@ footer {
     overflow: hidden;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Main body */
 
 .main-container {
@@ -649,4 +653,61 @@ ul.flex.daily-weekly-forecast li:hover {
 
 ul.flex.daily-weekly-forecast:hover li:not(:hover) {
     opacity: 1;
+}
+
+/* Custom scrollbar */
+
+*::-webkit-scrollbar {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--header-bg);
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--container-bg);
+}
+
+/* From https://css.glass */
+
+.weather-info,
+.country-forecast,
+.weather-location-card-1,
+.weather-location-card-2,
+.weather-location-card-3 ul,
+.weather-additional-details li,
+.daily-weekly-forecast li,
+.section-main ul li {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.5px);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+.weekly-forecast ul,
+.daily-forecast ul,
+.weather-info-card-2 {
+    background-color: transparent;
+}
+
+.weather-location-card-1,
+.weather-location-card-2,
+.weather-location-card-3 li {}
+
+.weather-info,
+.country-forecast {}
+
+.weather-location-card-1,
+.weather-location-card-2,
+.weather-additional-details li,
+.daily-weekly-forecast li,
+.section-main ul li {
+    background-color: #f6f6f7;
+    background-image: var(--bg-transparent);
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.5px);
+    border: 1px solid rgba(255, 255, 255, 0.75);
 }
