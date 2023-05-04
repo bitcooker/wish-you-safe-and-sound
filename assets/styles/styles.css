@@ -162,3 +162,17 @@ footer {
     border-bottom: 2px solid var(--btn-bg-secondary);
     overflow: hidden;
 }
+
+/* theme toggle button */
+
+.search-container>button {
+    width: 2.25rem;
+    margin-left: 1rem;
+    background-color: var(--main-bg);
+}
+
+.search-container>button:hover {
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--btn-bg-secondary);
+}
