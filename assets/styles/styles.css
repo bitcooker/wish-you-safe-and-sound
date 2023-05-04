@@ -650,3 +650,18 @@ ul.flex.daily-weekly-forecast li:hover {
 ul.flex.daily-weekly-forecast:hover li:not(:hover) {
     opacity: 1;
 }
+
+/* Custom scrollbar */
+
+*::-webkit-scrollbar {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--header-bg);
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--container-bg);
+}
