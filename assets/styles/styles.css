@@ -322,3 +322,211 @@ footer {
         transform: translateX(0px);
     }
 }
+
+/* Air quality and other details stylin*/
+
+.weather-location-card-2 {
+    background-color: var(--header-bg);
+    margin: var(--padding);
+    padding: var(--padding);
+    align-items: stretch;
+    justify-content: space-between;
+    border-radius: var(--border-radius);
+}
+
+.weather-location-small-1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.weather-additional-info h2,
+.weather-additional-info p {
+    font-weight: 600;
+}
+
+.weather-icons-btn {
+    padding-left: 3.75rem;
+}
+
+.weather-icons-btn button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--border-radius);
+    background-color: var(--header-bg);
+    border: none;
+    font-weight: 600;
+    margin: 0 calc(var(--padding) / 4);
+}
+
+.weather-icons-btn button img,
+.weather-icons-btn button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.weather-icons-btn .active {
+    color: var(--icon-btn-color);
+    background-color: var(--btn-bg-secondary);
+}
+
+.weather-icons-btn button:hover {
+    background-color: var(--btn-bg-secondary);
+}
+
+/* Air quality middle */
+
+.weather-location-small-2 {
+    align-items: flex-start;
+    justify-content: start;
+    font-weight: 600;
+}
+
+.weather-location-small-2>h1 {
+    font-size: 2rem;
+}
+
+.weather-location-small-2 sup {
+    font-size: 1rem;
+    padding: 0 var(--padding);
+    margin: 0 var(--padding);
+    border-radius: var(--border-radius);
+    background-color: #cce06b;
+    color: var(--main-text);
+}
+
+.compass {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+/* Progress bar */
+
+.weather-location-small-3 {
+    height: 4rem;
+    background-color: var(--container-bg);
+    border-radius: var(--border-radius);
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 0 var(--padding);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.skill-box {
+    width: 100%;
+    justify-content: space-around;
+}
+
+.top {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.skill-bar {
+    width: 100%;
+    justify-content: flex-start;
+    height: 10px;
+    border-radius: var(--border-radius);
+    background: var(--main-text);
+}
+
+.skill-per {
+    width: 70%;
+    background-color: var(--btn-bg-secondary);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    border-radius: 0.5rem 0 0 0.5rem;
+    height: 10px;
+    animation: progress 5s ease-in-out forwards;
+}
+
+.tooltip {
+    position: absolute;
+    width: 5rem;
+    top: -2rem;
+    right: -2.5rem;
+    font-weight: 600;
+    color: var(--container-bg);
+    padding: calc(var(--padding) / 4) var(--padding/2);
+    border-radius: calc(var(--border-radius) / 2);
+    background: var(--btn-bg-primary);
+}
+
+.tooltip::before {
+    content: "";
+    position: absolute;
+    background-color: var(--btn-bg-primary);
+    left: 50%;
+    bottom: -0.3rem;
+    height: 10px;
+    width: 10px;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: -1;
+}
+
+@keyframes progress {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/*  Weather additional details syling */
+
+.weather-location-card-3 {
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.weather-location-card-3 ul {
+    list-style-type: none;
+    margin: var(--padding);
+    margin-left: 0;
+    border-radius: var(--border-radius);
+    background-color: var(--header-bg);
+}
+
+.weather-additional-details li {
+    display: grid;
+    grid-template-columns: 0.5fr 3.5fr;
+    align-items: center;
+    justify-content: space-around;
+    margin: var(--padding);
+    border-radius: var(--border-radius);
+    background-color: var(--container-bg);
+    color: var(--btn-bg-primary);
+    padding-right: var(--padding);
+}
+
+.weather-additional-details li>img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 var(--padding);
+    filter: none;
+    color: var(--btn-bg-secondary);
+}
+
+.li-content {
+    padding: calc(var(--padding)/4) 0;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.li-content img {
+    width: 1.5rem;
+    filter: none;
+}
+
+.li-content description {
+    padding-right: var(--padding);
+    font-size: 0.75rem;
+}
