@@ -703,3 +703,13 @@ ul.flex.daily-weekly-forecast:hover li:not(:hover) {
     backdrop-filter: blur(2.5px);
     border: 1px solid rgba(255, 255, 255, 0.75);
 }
+
+.socialsCredits a {
+    padding: 0 var(--padding);
+}
+
+.socialsCredits a>img {
+    filter: none;
+
+    background-color: transparent;
+}
