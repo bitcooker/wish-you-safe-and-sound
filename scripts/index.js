@@ -165,9 +165,9 @@ async function weatherDetailsUpdate(weatherData) {
 
     const isNight = hour >= 19 || hour <= 4;
     if (isNight) {
-        sunriseSunsetBg.src = "assets/night.png";
+        sunriseSunsetBg.src = "./assets/images/static-image/night.png";
     } else {
-        sunriseSunsetBg.src = "assets/day.png";
+        sunriseSunsetBg.src = "./assets/images/static-image/day.png";
     }
 
     function shortformatUnixTime(sunrise, utcOffset, options = {}) {
@@ -197,7 +197,7 @@ async function weatherDetailsUpdate(weatherData) {
     const dayOrNightIcon = weatherData.weather[0].icon.split("").pop();
     const iconId = weatherData.weather[0].id;
 
-    dayCardIcon.src = `assets/animation-ready/${weatherIconData[0][dayOrNightIcon][iconId]}.svg`;
+    dayCardIcon.src = `./assets/images/animation-image/${weatherIconData[0][dayOrNightIcon][iconId]}.svg`;
 
     const weatherCaution = weatherData.weather[0].main;
 
@@ -231,7 +231,7 @@ async function weatherDetailsUpdate(weatherData) {
         value.includes(`${humidity_level}`)
     );
 
-    humidity_warning.src = `assets/animation-ready/${humidity_level_warning[0]}.svg`;
+    humidity_warning.src = `./assets/images/animation-image/${humidity_level_warning[0]}.svg`;
 
     let wind_speed_level = weatherData.wind.speed * (18 / 5);
 
@@ -265,7 +265,7 @@ async function weatherDetailsUpdate(weatherData) {
         value.includes(`${wind_speed_level}`)
     );
 
-    windSpeed_warning.src = `assets/animation-ready/${wind_level_warning[0]}.svg`;
+    windSpeed_warning.src = `./assets/images/animation-image/${wind_level_warning[0]}.svg`;
 }
 
 //Air quality and pollen details
@@ -389,7 +389,7 @@ async function additonalWeatherUpdate(airQualityData) {
         value.includes(`${uv_level_description}`)
     );
 
-    uv_index_warning.src = `assets/animation-ready/${uv_level_warning[0]}.svg`;
+    uv_index_warning.src = `./assets/images/animation-image/${uv_level_warning[0]}.svg`;
 
     let pollen_description = null;
 
@@ -414,7 +414,7 @@ async function additonalWeatherUpdate(airQualityData) {
         value.includes(`${pollen_description}`)
     );
 
-    pollen_warning.src = `assets/animation-ready/${pollen_level_warning[0]}.svg`;
+    pollen_warning.src = `./assets/images/animation-image/${pollen_level_warning[0]}.svg`;
 }
 
 // toggle units
@@ -483,4 +483,60 @@ unitConversion.addEventListener("click", () => {
 
         forecastCities(units);
     }
+});
+
+//get location when location icon is clicked
+
+const geoLocationCoords = document.querySelector(".location-btn");
+
+geoLocationCoords.addEventListener("click", () => {
+    navigator.geolocation.getCurrentPosition(async (postion) => {
+        const latitude = postion.coords.latitude;
+        const longitude = postion.coords.longitude;
+
+        localStorage.setItem("latitude", latitude);
+        localStorage.setItem("longitude", longitude);
+
+        weatherDetails(latitude, longitude, units);
+        airQuality(latitude, longitude);
+        futureForecast(coords[0], coords[1]);
+    });
+});
+
+// weather details at the specified location
+
+async function weatherDetails(latitude, longitude, units) {
+    const openWeatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${APIKEY}&units=${units}`;
+
+    try {
+        let response = await fetch(openWeatherApi);
+        let weatherData = await response.json();
+
+        weatherDetailsUpdate(weatherData);
+        airQuality(weatherData.coord.lon, weatherData.coord.lon);
+
+        futureForecast(latitude, longitude);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+//get weather location from input field by clicking Enter key or search icon
+
+//when enter key is clicked
+
+const searchInput = document.querySelector("#location-search-btn");
+const searchInputclick = document.querySelector(".search-btn");
+
+searchInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        getLocation(searchInput);
+        searchInput.value = "";
+    }
+});
+
+searchInputclick.addEventListener("click", () => {
+    getLocation(searchInput);
+    searchInput.value = "";
 });
