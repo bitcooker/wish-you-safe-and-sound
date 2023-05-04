@@ -1,4 +1,4 @@
-# Frontend Developer Coding Challenge for Springwook
+# Frontend Developer Coding Challenge for Springwood
 
 ## Introduction
 
