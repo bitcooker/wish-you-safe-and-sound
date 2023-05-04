@@ -530,3 +530,123 @@ footer {
     padding-right: var(--padding);
     font-size: 0.75rem;
 }
+
+/* daily-weekly styling */
+
+.weather-info-card-2 {
+    background-color: var(--container-bg);
+    align-items: stretch;
+    justify-content: flex-start;
+    border-radius: var(--border-radius);
+}
+
+.toggle-btn {
+    justify-content: space-between;
+    padding: 0 var(--padding);
+}
+
+.toggle-btn h2 {
+    font-weight: 600;
+}
+
+.toggle-btn .button {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.toggle-btn button {
+    color: var(--main-text);
+    border: none;
+    font-size: 1rem;
+    padding: var(--padding);
+    font-weight: 600;
+    margin: 0 var(--padding);
+    background-color: var(--bg-transparent);
+}
+
+.toggle-btn button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0 calc(var(--padding) / 2);
+}
+
+.toggle-btn button:hover {
+    scale: 1.05;
+    background-color: var(--btn-bg-primary);
+    color: var(--btn-bg-secondary);
+    border-radius: var(--padding);
+}
+
+.toggle-btn .active {
+    background-color: var(--btn-bg-secondary);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+}
+
+.weekly-forecast,
+.daily-forecast {
+    justify-content: space-between;
+}
+
+.daily-weekly-forecast {
+    border-radius: var(--border-radius);
+    list-style: none;
+    align-items: stretch;
+    background-color: var(--container-bg);
+}
+
+.daily-weekly-forecast li {
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: var(--header-bg);
+    margin: var(--padding);
+    border-radius: var(--border-radius);
+    padding: var(--padding) 0;
+    margin-left: 0;
+    transition: background-color 0.5s ease;
+}
+
+.daily-weekly-forecast li:first-child {
+    margin-left: var(--padding);
+}
+
+.daily-weekly-forecast li:last-child {
+    margin-right: var(--padding);
+}
+
+.daily-weekly-forecast li span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.daily-weekly-forecast li img {
+    width: 7.5rem;
+    height: 5.5rem;
+}
+
+.daily-weekly-forecast li .forecast-temp-high,
+.daily-weekly-forecast li .forecast-temp-low,
+.daily-forecast-temp {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.daily-forecast-temp {
+    margin: calc(var(--padding) * 1.25) 0;
+}
+
+.countries-forecast:hover,
+.daily-weekly-forecast li:hover {
+    scale: 1.02;
+    background-color: #aadaf3;
+    background-image: var(--cards-hover);
+}
+
+ul.flex.daily-weekly-forecast li:hover {
+    opacity: 1;
+}
+
+ul.flex.daily-weekly-forecast:hover li:not(:hover) {
+    opacity: 1;
+}
