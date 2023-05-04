@@ -416,3 +416,71 @@ async function additonalWeatherUpdate(airQualityData) {
 
     pollen_warning.src = `assets/animation-ready/${pollen_level_warning[0]}.svg`;
 }
+
+// toggle units
+
+const mainUnit = document.querySelector(".unit-conversion");
+const unitConversion = document.querySelector(".slash");
+
+const onLoadLocation = localStorage.getItem("location");
+
+if (onLoadLocation) {
+    getLocation(onLoadLocation);
+} else {
+    getLocation("Singapore");
+}
+
+async function getLocation(position) {
+    let openWeatherApi;
+    if (typeof position === "object") {
+        openWeatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${position.value}&appid=${APIKEY}&units=${units}`;
+        localStorage.setItem("location", position.value);
+    } else {
+        openWeatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${position}&appid=${APIKEY}&units=${units}`;
+        localStorage.setItem("location", position);
+    }
+
+    let response = await fetch(openWeatherApi);
+    let weatherData = await response.json();
+
+    let latitude = weatherData.coord.lat;
+    let longitude = weatherData.coord.lon;
+
+    localStorage.setItem("latitude", latitude);
+    localStorage.setItem("longitude", longitude);
+
+    weatherDetailsUpdate(weatherData);
+    airQuality(weatherData);
+    futureForecast(weatherData.coord.lat, weatherData.coord.lon);
+
+    if (weatherData.cod === "404") {
+        alert("Please enter a valid location");
+    }
+}
+
+unitConversion.addEventListener("click", () => {
+    let temp = mainUnit.childNodes[1].nodeValue;
+    mainUnit.childNodes[1].nodeValue = `${unitConversion.childNodes[1].childNodes[0].nodeValue}`;
+    unitConversion.childNodes[1].childNodes[0].nodeValue = temp;
+    if (mainUnit.childNodes[1].nodeValue === "F") {
+        units = "imperial";
+        weatherDetails(
+            localStorage.getItem("latitude"),
+            localStorage.getItem("longitude"),
+            units
+        );
+        unitDegree = "F";
+
+        forecastCities(units);
+    } else {
+        units = "metric";
+        weatherDetails(
+            localStorage.getItem("latitude"),
+            localStorage.getItem("longitude"),
+            units
+        );
+        unitDegree = "C";
+
+        forecastCities(units);
+    }
+});
