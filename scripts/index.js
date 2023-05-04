@@ -28,3 +28,21 @@ if (localDeviceTheme === "light") {
 } else {
     modetoggle.src = "./assets/images/animation-image/clear-day.svg";
 }
+
+//Jokes loop through every 7 seconds
+
+const jokesQuestion = document.querySelector(".joke-question");
+const jokesanswer = document.querySelector(".joke-answer");
+
+setInterval(async () => {
+    await fetch("constants/weather-jokes.json")
+        .then((response) => response.json())
+        .then((data) => {
+            let RandomNumber = Math.floor(Math.random() * data.length);
+            jokesQuestion.innerText = data[RandomNumber]["question"];
+            jokesanswer.innerText = data[RandomNumber]["answer"];
+        })
+        .catch((error) => console.error(error));
+}, 7000);
+
+
