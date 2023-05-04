@@ -183,16 +183,8 @@ footer {
 
 /* forecast location display styling */
 
-.location-jokes {
+.location-panel {
     justify-content: space-between;
-}
-
-.jokes {
-    align-items: flex-end;
-}
-
-.joke-answer {
-    font-size: 0.75rem;
 }
 
 /* dashboard container styling*/
