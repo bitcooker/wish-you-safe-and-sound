@@ -61,9 +61,48 @@
       </div>
     </section>
 
-    <div class="dashboard">
+    <section class="dashboard">
+      <div class="flex flex-column weather-info">
+        <div class="flex weather-info-card-1">
+          <div class="flex flex-column weather-location-card-1">
+            <div class="flex temperature-container-1">
+              <h1 class="temp">
+                32
+                <span class="unit-conversion" id="metric"><span>&deg; </span> C
+                </span>
+                <sup>
+                  <span class="slash">
+                    / <a class="imperial" id="imperial" active>F</a></span>
+                </sup>
+              </h1>
+              <div class="flex day-card">
+                <img id="day-card" src="assets/images/animation-image/thunderstorms-day-rain.svg" alt="" />
+              </div>
+            </div>
 
-    </div>
+            <div class="flex temperature-container-2">
+              <div class="flex weather-condition">
+                <p>
+                  <span id="description-temp">Clouds </span>
+                  <br />
+                  Feels like
+                  <span class="temps" id="feels-like"> 32 &deg; C</span>
+                  <br />
+                  <small id="condition-msg">
+                    <img class="condition-icon" src="assets/images/animation-image/umbrella.svg" alt="broken" />
+                    Ideal Conditions</small>
+                </p>
+              </div>
+
+              <div class="flex location-image">
+                <img class="current-temp-image" src="assets/images/static-image/rainy_image.png" alt="Rainy Image" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
   </div>
 
   <script src="scripts/index.js"></script>

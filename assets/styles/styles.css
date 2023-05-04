@@ -199,3 +199,126 @@ footer {
     justify-content: center;
     flex-wrap: wrap;
 }
+
+/* weather information board styling */
+
+.weather-info {
+    align-items: stretch;
+    justify-content: space-between;
+    background-color: var(--container-bg);
+    margin: var(--padding);
+    margin-left: 0;
+
+    border-radius: var(--border-radius);
+}
+
+.weather-info-card-1 {
+    width: fit-content;
+    align-items: stretch;
+    justify-content: space-between;
+    border-radius: var(--border-radius);
+}
+
+.weather-location-card-1 {
+    align-items: stretch;
+    justify-content: space-between;
+    padding: var(--padding);
+    background-color: var(--header-bg);
+    margin: var(--padding);
+    margin-right: 0;
+    border-radius: var(--border-radius);
+}
+
+.temperature-container-1,
+.temperature-container-2 {
+    justify-content: space-between;
+}
+
+.temperature-container-2 {
+    align-items: flex-end;
+}
+
+.weather-condition {
+    width: 11.5rem;
+    display: flex;
+    align-items: stretch;
+}
+
+.day-card {
+    width: 5rem;
+}
+
+.temperature-container-1 h1 {
+    font-size: 3.5rem;
+}
+
+.temperature-container-1 h1>sup {
+    font-size: 1rem;
+}
+
+.weather-condition {
+    font-weight: 400;
+    border-radius: var(--border-radius);
+    background-color: var(--header-bg);
+    padding: var(--padding);
+}
+
+.weather-condition>p {
+    width: 10.5rem;
+}
+
+#condition-msg {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#description-temp {
+    font-weight: 600;
+}
+
+
+.temps {
+    font-weight: 600;
+}
+
+.weather-condition small {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weather-condition img {
+    height: 2rem;
+    width: 2rem;
+}
+
+.location-image {
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--header-bg);
+    border-radius: var(--border-radius);
+    margin-left: 1.5rem;
+}
+
+.location-image img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(0px);
+    }
+
+    33% {
+        transform: translateX(-10px);
+    }
+
+    67% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
