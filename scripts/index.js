@@ -414,6 +414,30 @@ if (onLoadLocation) {
     getLocation("Singapore");
 }
 
+unitConversion.addEventListener("click", () => {
+    let temp = mainUnit.childNodes[1].nodeValue;
+    mainUnit.childNodes[1].nodeValue = `${unitConversion.childNodes[1].childNodes[0].nodeValue}`;
+    unitConversion.childNodes[1].childNodes[0].nodeValue = temp;
+    if (mainUnit.childNodes[1].nodeValue === "F") {
+        units = "imperial";
+        weatherDetails(
+            localStorage.getItem("latitude"),
+            localStorage.getItem("longitude"),
+            units
+        );
+        unitDegree = "F";
+    } else {
+        units = "metric";
+        weatherDetails(
+            localStorage.getItem("latitude"),
+            localStorage.getItem("longitude"),
+            units
+        );
+        unitDegree = "C";
+    }
+});
+
+
 async function getLocation(position) {
     let openWeatherApi;
     if (typeof position === "object") {
@@ -441,33 +465,6 @@ async function getLocation(position) {
         alert("Please enter a valid location");
     }
 }
-
-unitConversion.addEventListener("click", () => {
-    let temp = mainUnit.childNodes[1].nodeValue;
-    mainUnit.childNodes[1].nodeValue = `${unitConversion.childNodes[1].childNodes[0].nodeValue}`;
-    unitConversion.childNodes[1].childNodes[0].nodeValue = temp;
-    if (mainUnit.childNodes[1].nodeValue === "F") {
-        units = "imperial";
-        weatherDetails(
-            localStorage.getItem("latitude"),
-            localStorage.getItem("longitude"),
-            units
-        );
-        unitDegree = "F";
-
-        forecastCities(units);
-    } else {
-        units = "metric";
-        weatherDetails(
-            localStorage.getItem("latitude"),
-            localStorage.getItem("longitude"),
-            units
-        );
-        unitDegree = "C";
-
-        forecastCities(units);
-    }
-});
 
 //get location when location icon is clicked
 
