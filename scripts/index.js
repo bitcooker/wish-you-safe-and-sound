@@ -29,25 +29,9 @@ if (localDeviceTheme === "light") {
     modetoggle.src = "./assets/images/animation-image/clear-day.svg";
 }
 
-//Jokes loop through every 7 seconds
-
-const jokesQuestion = document.querySelector(".joke-question");
-const jokesanswer = document.querySelector(".joke-answer");
-
-setInterval(async () => {
-    await fetch("constants/weather-jokes.json")
-        .then((response) => response.json())
-        .then((data) => {
-            let RandomNumber = Math.floor(Math.random() * data.length);
-            jokesQuestion.innerText = data[RandomNumber]["question"];
-            jokesanswer.innerText = data[RandomNumber]["answer"];
-        })
-        .catch((error) => console.error(error));
-}, 7000);
-
 //open weather API key, units
 
-const APIKEY = "02937867dce4be1ea755fb1a3378315d";
+const APIKEY = "8bcfb7bc939dcceff52f62edc43547b8";
 let units = "metric";
 let unitDegree = "C";
 
@@ -561,3 +545,77 @@ weeklyForecastbtn.addEventListener("click", () => {
     dailyForecastbtn.classList.remove("active");
     weeklyForecastbtn.classList.add("active");
 });
+
+//future forecast
+
+const forecastDate = document.querySelectorAll(".forecast-date");
+const weeklyForecastIcon = document.querySelectorAll(".weekly-forecast-icon");
+const forecastTempHigh = document.querySelectorAll(".forecast-temp-high");
+const forecastTempLow = document.querySelectorAll(".forecast-temp-low");
+const dailyForecastIcon = document.querySelectorAll(".daily-forecast-icon");
+const dailyforecastTemp = document.querySelectorAll(".daily-forecast-temp");
+
+async function futureForecast(latitude, longitude) {
+    const openMeteroAPI = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto`
+    );
+    const weeklyData = await openMeteroAPI.json();
+    const dateArray = await weeklyData.daily.time;
+    let weeklyiconId = weeklyData.daily.weathercode;
+    let dailyiconId = weeklyData.hourly.weathercode;
+
+    const weekdays = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ];
+
+    const weatherIcon = await fetch("/constants/icons_description.json");
+    const weatherIconData = await weatherIcon.json();
+
+    //for simplicity i created array of values which corresponds to the time interval of 3hrs starting from 5am
+
+    const dayTimeArray = [5, 8, 11, 14, 17, 20, 23];
+
+    //loop through each date in the array
+
+    for (let i = 0; i < 7; i++) {
+        forecastDate[i].innerHTML = weekdays[new Date(dateArray[i]).getDay()];
+
+        weeklyForecastIcon[i].src = `./assets/images/animation-image/${weatherIconData[0].d[weeklyiconId[i]]
+            }.svg`;
+
+        if (units === "metric") {
+            forecastTempHigh[i].innerHTML = `${Math.floor(
+                weeklyData.daily.temperature_2m_max[i]
+            )} &deg; C`;
+            forecastTempLow[i].innerHTML = `${Math.floor(
+                weeklyData.daily.temperature_2m_min[i]
+            )} &deg; C`;
+        } else if (units === "imperial") {
+            forecastTempHigh[i].innerHTML = `${Math.floor(
+                weeklyData.daily.temperature_2m_max[i] * 3.6
+            )} &deg; F`;
+            forecastTempLow[i].innerHTML = `${Math.floor(
+                weeklyData.daily.temperature_2m_min[i] * 3.6
+            )} &deg; F`;
+        }
+
+        dailyForecastIcon[i].src = `./assets/images/animation-image/${weatherIconData[0].d[dailyiconId[i]]
+            }.svg`;
+
+        if (units === "metric") {
+            dailyforecastTemp[i].innerHTML = `${Math.floor(
+                weeklyData.hourly.temperature_2m[dayTimeArray[i]]
+            )} &deg; C`;
+        } else if (units === "imperial") {
+            dailyforecastTemp[i].innerHTML = `${Math.floor(
+                weeklyData.hourly.temperature_2m[dayTimeArray[i]] * 3.6
+            )} &deg; F`;
+        }
+    }
+}
